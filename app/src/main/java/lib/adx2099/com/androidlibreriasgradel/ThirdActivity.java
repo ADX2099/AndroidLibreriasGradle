@@ -20,9 +20,11 @@ import android.widget.Toast;
 public class ThirdActivity extends AppCompatActivity {
     private EditText editTextPhone;
     private EditText editTextWeb;
+    private EditText editTextContact;
     private ImageButton imgBtnPhone;
     private ImageButton imageButtonWeb;
     private ImageButton imageButtonCamera;
+    private ImageButton imageButtonContact;
     private final int PHONE_CALL_CODE = 100;
     private Context context = this;
 
@@ -33,9 +35,11 @@ public class ThirdActivity extends AppCompatActivity {
 
         editTextPhone = findViewById(R.id.editTextPhone);
         editTextWeb = findViewById(R.id.editTextWeb);
+        editTextContact = findViewById(R.id.editTextContact);
         imgBtnPhone = findViewById(R.id.imageButtonPhone);
         imageButtonWeb = findViewById(R.id.imageButtonWeb);
         imageButtonCamera = findViewById(R.id.imageButtonCamera);
+        imageButtonContact = findViewById(R.id.imageButtonContact);
 
         imgBtnPhone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +91,36 @@ public class ThirdActivity extends AppCompatActivity {
 
             private void NewerVersions() {
                 requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, PHONE_CALL_CODE);
+            }
+        });
+
+        //Boton WEB
+        imageButtonWeb.setOnClickListener(new View.OnClickListener(){
+
+
+            @Override
+            public void onClick(View view) {
+                String url = editTextWeb.getText().toString();
+                if(url != null && !url.isEmpty()){
+                    Intent intentWeb = new Intent();
+                    intentWeb.setAction(Intent.ACTION_VIEW);
+                    intentWeb.setData(Uri.parse("http://"+url));
+                    startActivity(intentWeb);
+                }
+            }
+        });
+
+        imageButtonContact.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                String url = editTextContact.getText().toString();
+                if(url != null && !url.isEmpty()){
+                    Intent intentContact = new Intent();
+                    intentContact.setAction(Intent.ACTION_VIEW);
+                    intentContact.setData(Uri.parse("content://contacts/people"));
+                    startActivity(intentContact);
+                }
             }
         });
 

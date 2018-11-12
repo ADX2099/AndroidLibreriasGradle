@@ -41,12 +41,11 @@
                 android:id="@+id/editTextWeb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_alignStart="@+id/editTextPhone"
+                android:layout_alignParentTop="true"
                 android:layout_marginTop="122dp"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:inputType="textPersonName" />
 
             <ImageButton
                 android:id="@+id/imageButtonWeb"
@@ -55,6 +54,25 @@
                 android:layout_alignBottom="@+id/editTextWeb"
                 android:layout_alignStart="@+id/imageButtonPhone"
                 android:src="@android:drawable/ic_menu_view"
+                android:background="@android:color/holo_purple"/>
+
+            <EditText
+                android:id="@+id/editTextContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/editTextPhone"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="202dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <ImageButton
+                android:id="@+id/imageButtonContact"
+                android:layout_width="64dp"
+                android:layout_height="55dp"
+                android:layout_alignEnd="@+id/imageButtonPhone"
+                android:layout_alignBottom="@+id/editTextContact"
+                android:src="@android:drawable/ic_menu_agenda"
                 android:background="@android:color/holo_purple"/>
 
         </RelativeLayout>
