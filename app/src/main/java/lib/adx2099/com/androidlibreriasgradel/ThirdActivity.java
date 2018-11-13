@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class ThirdActivity extends AppCompatActivity {
     private ImageButton imageButtonCamera;
     private ImageButton imageButtonContact;
     private final int PHONE_CALL_CODE = 100;
+    private final int PICTURE_FROM_CAMERA = 50;
     private Context context = this;
 
     @Override
@@ -124,6 +126,34 @@ public class ThirdActivity extends AppCompatActivity {
             }
         });
 
+        imageButtonCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentCamera = new Intent("android.media.action.IMAGE_CAPTURE");
+                startActivity(intentCamera);
+
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case PICTURE_FROM_CAMERA:
+                if(resultCode == AppCompatActivity.RESULT_OK){
+                    String flags = data.toUri(0);
+                    Toast.makeText(this,"",Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(this,"There was an error", Toast.LENGTH_LONG).show();
+                }
+
+                break;
+            default:
+                super.onActivityResult(requestCode,resultCode,data);
+
+        }
     }
 
     @Override
